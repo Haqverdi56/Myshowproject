@@ -1,0 +1,8 @@
+#admin-panel {
+    background-color: #202123;
+    height: 100vh;
+    .head-admin-panel {
+        text-align: center;
+        font-size: 32px;
+    }
+}

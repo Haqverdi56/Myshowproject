@@ -1,0 +1,28 @@
+@import url('https://fonts.cdnfonts.com/css/euclid-circular-b');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Euclid Circular B', sans-serif;
+	font-weight: 500;
+}
+a {
+	text-decoration: none;
+	color: white;
+	color: #bbdef9;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+body {
+	background-color: black;
+	color: white;
+	height: 100vh;
+}

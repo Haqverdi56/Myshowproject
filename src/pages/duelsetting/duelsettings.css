@@ -1,0 +1,79 @@
+#duel-settings {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	background-color: #f9f9f9;
+    height: 100vh;
+}
+
+#duel-settings form {
+	display: flex;
+	flex-direction: column;
+	max-width: 400px;
+	width: 100%;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	background-color: white;
+}
+
+#duel-settings div {
+	margin-bottom: 15px;
+}
+
+#duel-settings label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+#duel-settings select,
+#duel-settings input {
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+#duel-settings button {
+	padding: 10px 15px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s ease;
+	font-size: 20px;
+}
+
+#duel-settings button:hover {
+	background-color: #0056b3;
+}
+
+
+.back-admin {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.back {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 20px;
+		gap: 15px;
+		padding: 10px 42px;
+		margin-top: 20px;
+		background-color: #007bff;
+		color: yellow;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		transition: background-color 0.3s ease;
+		&:hover {
+			background-color: #0056b3;
+		}
+	}
+}
