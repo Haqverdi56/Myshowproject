@@ -1,0 +1,29 @@
+#live-gifts {
+	.gifts {
+		.gift-box {
+			/* display: flex; */
+            padding: 10px;
+			.gift-imgs {
+				display: flex;
+                align-items: center;
+                width: 150px;
+                .gift-repeatCount {
+                    font-size: 20px;
+                    margin: 0 20px;
+                }
+                img {
+                    height: 100%;
+                    width: 100%;
+                }
+			}
+			.gift-photo {
+                width: 120px;
+                height: 60px;
+				img {
+                    width: 100%;
+                    height: 100%;
+				}
+			}
+		}
+	}
+}

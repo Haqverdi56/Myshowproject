@@ -18,26 +18,24 @@ function App() {
 		return savedClose === 'true';
 	});
 	const [participants, setParticipants] = useState(null);
-	const [giftData, setGiftData] = useState(null);
-
+	const [giftData, setGiftData] = useState([]);
 	// participants?.sort((a, b) => b.score - a.score)
+	async function test() {
+		const response = await axios.get('http://localhost:3000/api/participants');
+		setParticipants(response.data);
+	}
+
 	useEffect(() => {
-		async function test() {
-			const response = await axios.get(
-				'http://localhost:3000/api/participants'
-			);
-			setParticipants(response.data);
-			socket.on('gift', (data) => {
-				updateScore(
-					data.uniqueId,
-					data.giftId,
-					data.diamondCount,
-					data.repeatCount,
-					response.data
-				);
-				setGiftData(data);
-			});
-		}
+		socket.on('gift', (data) => {
+			// updateScore(
+			// 	data.uniqueId,
+			// 	data.giftId,
+			// 	data.diamondCount,
+			// 	data.repeatCount
+			// );
+			test()
+			setGiftData((prevGifts) => [data, ...prevGifts]);
+		});
 		test();
 		return () => {
 			socket.off('message');
@@ -48,37 +46,8 @@ function App() {
 		localStorage.setItem('close', close);
 	}, [close]);
 
-	async function updateScore(uniqueId, giftId, count, repeatCount, a) {
+	async function updateScore(uniqueId, giftId, count, repeatCount) {
 		console.log(uniqueId, giftId, count, repeatCount);
-		// const response = await axios.get('http://localhost:3000/api/participants');
-
-		const participantToUpdate = a.find((participant) =>
-			participant.giftId.includes(giftId)
-		);
-		// console.log(participants);
-
-		try {
-			if (participantToUpdate) {
-				await axios.patch(
-					`http://localhost:3000/api/participants/${participantToUpdate?._id}`,
-					{
-						score: count * repeatCount,
-					}
-				);
-				console.log(participantToUpdate.name);
-			}
-			const updatedParticipant = response.data;
-
-			setParticipants((prevParticipants) =>
-				prevParticipants.map((participant) =>
-					participant.uniqueId === uniqueId
-						? { ...participant, score: updatedParticipant.score }
-						: participant
-				)
-			);
-		} catch (error) {
-			// console.log('Error updating score:', error.message);
-		}
 	}
 
 	return (
@@ -87,14 +56,16 @@ function App() {
 				<Route path='/' element={<Homepage />} />
 				<Route path='/admin' element={<Adminpanel />} />
 				<Route path='/livegifts' element={<Livegifts giftData={giftData} />} />
-				<Route path='/duelsettings' element={<Duelsettings participants={participants} />} />
+				<Route
+					path='/duelsettings'
+					element={<Duelsettings participants={participants} />}
+				/>
 				<Route
 					path='/screen'
 					element={
 						<Monitorscreen
 							participants={participants}
 							setParticipants={setParticipants}
-							updateScore={updateScore}
 							close={close}
 						/>
 					}

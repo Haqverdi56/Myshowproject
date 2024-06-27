@@ -20,7 +20,7 @@ function Increasescore({ participants }) {
 				score: count,
 			}
 		);
-		console.log(response);
+		console.log(response.data);
 	}
 
 	const handleSubmit = (e) => {
