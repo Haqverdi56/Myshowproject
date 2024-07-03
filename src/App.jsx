@@ -33,7 +33,7 @@ function App() {
 			// 	data.diamondCount,
 			// 	data.repeatCount
 			// );
-			test()
+			test();
 			setGiftData((prevGifts) => [data, ...prevGifts]);
 		});
 		test();
