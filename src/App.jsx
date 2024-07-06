@@ -19,7 +19,9 @@ function App() {
 	});
 	const [participants, setParticipants] = useState(null);
 	const [giftData, setGiftData] = useState([]);
-	// participants?.sort((a, b) => b.score - a.score)
+
+	participants?.sort((a, b) => b.score - a.score);
+
 	async function test() {
 		const response = await axios.get('http://localhost:3000/api/participants');
 		setParticipants(response.data);
