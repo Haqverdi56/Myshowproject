@@ -8,12 +8,12 @@
 	height: 100vh;
 	display: flex;
 	.boxes {
-		height: 100vh;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
 		column-gap: 120px;
 		margin-right: 30px;
+		padding: 0 60px;
 		.box {
 			margin-top: 5rem;
 			text-align: center;
