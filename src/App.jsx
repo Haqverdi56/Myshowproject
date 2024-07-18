@@ -51,7 +51,7 @@ function App() {
 	async function updateScore(uniqueId, giftId, count, repeatCount) {
 		console.log(uniqueId, giftId, count, repeatCount);
 	}
-
+	
 	return (
 		<>
 			<Routes>
@@ -60,7 +60,7 @@ function App() {
 				<Route path='/livegifts' element={<Livegifts giftData={giftData} />} />
 				<Route
 					path='/duelsettings'
-					element={<Duelsettings participants={participants} />}
+					element={<Duelsettings participants={participants}/>}
 				/>
 				<Route
 					path='/screen'

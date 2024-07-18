@@ -1,8 +1,21 @@
 import React from 'react';
 import './adminpanel.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function Adminpanel() {
+	const resetScores = async () => {
+		try {
+			const response = await axios.patch(
+				'http://localhost:3000/api/reset-scores'
+			);
+			console.log(response.data.message);
+			alert('All scores have been reset to 0');
+		} catch (error) {
+			console.error('Error resetting scores:', error);
+			alert('Failed to reset scores');
+		}
+	};
 	return (
 		<section id='admin-panel'>
 			<div className='container'>
@@ -38,7 +51,9 @@ function Adminpanel() {
 						<b>→ DİQQƏT!</b>
 					</div>
 					<div className='commands'>
-						<a href='#'>Xalları Sıfırla</a>
+						<a onClick={() => resetScores()} href='#'>
+							Xalları Sıfırla
+						</a>
 					</div>
 				</div>
 			</div>

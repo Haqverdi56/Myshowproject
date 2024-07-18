@@ -5,58 +5,57 @@ import { Link } from 'react-router-dom';
 import './duelsettings.css';
 
 function Duelsettings({ participants }) {
-	console.log(participants);
-	const [selectedNameId, setSelectedNameId] = useState('');
-	const [count, setCount] = useState(0);
+	// console.log(participants);
+	const [selectedIds, setSelectedIds] = useState(['', '', '']);
+	console.log(selectedIds);
+	// async function Duel(selectedParticipant) {
 
-	async function Duel(selectedParticipant) {
-        
-	}
+	// }
 
-	const handleSubmit = (e) => {
+	const handleIdChange = (index, value) => {
+		const newIds = [...selectedIds];
+		newIds[index] = value;
+		setSelectedIds(newIds);
+	};
+
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const selectedParticipant = participants.find(
-			(participant) => participant._id === selectedNameId
-		);
-
-		if (selectedParticipant) {
-			Duel(selectedParticipant);
+		try {
+			const response = await axios.patch('http://localhost:3000/api/set-duel', {
+				ids: selectedIds,
+			});
+			console.log(response.data.message);
+			alert('Participants updated successfully');
+		} catch (error) {
+			console.error('Error updating participants:', error);
+			alert('Failed to update participants');
 		}
-
-		setSelectedNameId('');
-		setCount('');
+		console.log(selectedIds);
 	};
 	return (
 		<div id='duel-settings'>
 			<div>
 				<form onSubmit={handleSubmit}>
-					<div>
-						<label>Select Participant: </label>
-						<select
-							value={selectedNameId}
-							onChange={(e) => setSelectedNameId(e.target.value)}
-							required
-						>
-							<option value=''>Select...</option>
-							{participants?.map((participant) =>
-								participant.isActive == true ? (
-									<option key={participant.name} value={participant._id}>
-										{participant.name}
-									</option>
-								) : null
-							)}
-						</select>
-					</div>
-					<div>
-						<label>Count: </label>
-						<input
-							type='number'
-							value={count}
-							onChange={(e) => setCount(e.target.value)}
-							required
-						/>
-					</div>
-					<button type='submit'>Səsi dəyiş</button>
+					{selectedIds.map((id, index) => (
+						<div key={index}>
+							<label>Select Participant: </label>
+							<select
+								value={id}
+								onChange={(e) => handleIdChange(index, e.target.value)}
+								required
+							>
+								<option value=''>Select...</option>
+								{participants?.map((participant) =>
+									participant.isActive ? (
+										<option key={participant._id} value={participant._id}>
+											{participant.name}
+										</option>
+									) : null
+								)}
+							</select>
+						</div>
+					))}
+					<button type='submit'>Dueli yarat!</button>
 				</form>
 				<div className='back-admin'>
 					<Link className='back' to='/admin'>
