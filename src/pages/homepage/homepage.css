@@ -3,7 +3,7 @@
 	max-width: 800px;
 	text-align: center;
 	#connect-info {
-		background-color: #ff0000;
+		/* background-color: #ff0000; */
 		padding: 20px;
 	}
 	#signin-socket-inputs {

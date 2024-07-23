@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './monitorscreen.css';
 import socket from '../../socket.js';
-import elikram from '../../assets/images/pp/elikram.png'
 
 function Monitorscreen({ participants, close, score }) {
 	// useEffect(() => {
@@ -23,7 +22,6 @@ function Monitorscreen({ participants, close, score }) {
 	return (
 		<div className='screen'>
 			<div className='container-screen'>
-				<img src={elikram} alt="" />
 				{!duel ? (
 					<div className='boxes'>
 						{participants &&
