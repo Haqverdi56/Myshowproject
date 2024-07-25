@@ -3,6 +3,11 @@
     height: 100vh;
     .head-admin-panel {
         text-align: center;
-        font-size: 32px;
+        font-size: 4rem;
+    }
+    .settings {
+        .commands {
+            font-size: 25px;
+        }
     }
 }

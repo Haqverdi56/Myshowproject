@@ -1,24 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './homepage.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function Homepage() {
+	const [connected, setConnected] = useState(false);
+
+	async function startShow() {
+		try {
+			const response = await axios.post('http://localhost:3000/api/connect');
+			console.log(response.data);
+			setConnected(true);
+		} catch (error) {
+			console.error('Başlatma hatası:', error);
+			setConnected(false);
+			error == {} ? setConnected(false) : null
+		}
+	}
 	async function disconnectLive() {
 		try {
-			console.log('Salam');
 			const response = await axios.post('http://localhost:3000/api/disconnect');
-			console.log(response);
-			console.log('TikTok canlı bağlantısı kapatıldı');
+			console.log(response.data);
+			setConnected(false);
 		} catch (error) {
-			console.log('Sağol');
 			console.error('TikTok canlı bağlantısını kapatma hatası:', error);
 		}
 	}
+
 	return (
 		<div className='show'>
-			<div id='connect-info'>
-				<p>Qoşulma Uğursuz!</p>
+			<div
+				id='connect-info'
+				style={
+					connected ? { backgroundColor: 'green' } : { backgroundColor: 'red' }
+				}
+			>
+				<p>{connected ? 'Qoşulma Uğurlu!' : 'Qoşulma Uğursuz!'}</p>
 			</div>
 			<div id='signin-socket-inputs'>
 				<div>
@@ -42,10 +59,12 @@ function Homepage() {
 			</div>
 			<div className='buttons'>
 				<div className='button-div'>
-					<button>Program start</button>
+					<button className='start-button' onClick={() => startShow()}>
+						Başla
+					</button>
 				</div>
 				<div className='button-div stop'>
-					<button onClick={() => disconnectLive()}>Program stop</button>
+					<button onClick={() => disconnectLive()}>Stop ver</button>
 				</div>
 				<div className='button-div'>
 					<Link to='/admin'>Admin Giriş</Link>

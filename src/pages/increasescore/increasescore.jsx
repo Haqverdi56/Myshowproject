@@ -53,7 +53,7 @@ function Increasescore({ participants }) {
 							{participants?.map((participant) =>
 								participant.isActive == true ? (
 									<option key={participant.name} value={participant._id}>
-										{participant.name}
+										{participant.name} - {participant.score} xal
 									</option>
 								) : null
 							)}

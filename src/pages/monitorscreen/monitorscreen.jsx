@@ -12,11 +12,9 @@ function Monitorscreen({ participants, close, score }) {
 	// }, []);
 	const [duel, setDuel] = useState(false);
 	useEffect(() => {
-		const as = participants?.some((participant) =>
-			participant.duel !== 0
-		);
+		const as = participants?.some((participant) => participant.duel !== 0);
 		console.log(as);
-		as ? setDuel(true) : setDuel(false)
+		as ? setDuel(true) : setDuel(false);
 	}, [participants]);
 
 	return (
