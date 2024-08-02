@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import './duelsettings.css';
 
 function Duelsettings({ participants }) {
-	// console.log(participants);
 	const [selectedIds, setSelectedIds] = useState(['', '', '']);
 	console.log(selectedIds);
 	// async function Duel(selectedParticipant) {

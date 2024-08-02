@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './monitorscreen.css';
 import socket from '../../socket.js';
 
-function Monitorscreen({ participants, close, score }) {
+function Monitorscreen({ participants, close }) {
+	const [duel, setDuel] = useState(false);
+
 	// useEffect(() => {
 	// 	const interval = setInterval(() => {
 	// 		window.location.reload();
@@ -10,12 +12,14 @@ function Monitorscreen({ participants, close, score }) {
 
 	// 	return () => clearInterval(interval);
 	// }, []);
-	const [duel, setDuel] = useState(false);
 	useEffect(() => {
 		const as = participants?.some((participant) => participant.duel !== 0);
-		console.log(as);
 		as ? setDuel(true) : setDuel(false);
+		
 	}, [participants]);
+	if (close == false) {
+		participants?.sort((a, b) => b.score - a.score);
+	}
 
 	return (
 		<div className='screen'>

@@ -20,16 +20,15 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-			width: 360px;
-			height: 650px;
+			width: 430px;
+			height: 750px;
 			gap: 10px;
 			.profil-photo {
 				border: 1px solid #ffffff;
-				height: 330px;
+				height: 370px;
 				border-radius: 50%;
 				display: flex;
 				justify-content: center;
-				
 				img {
 					border-radius: 10%;
 					border: 2px solid white;
@@ -43,8 +42,8 @@
 				flex-wrap: wrap;
 				justify-content: center;
 				.gift-img {
-					width: 110px;
-					height: 110px;
+					width: 140px;
+					height: 140px;
 					img {
 						width: 100%;
 						height: 100%;
@@ -55,7 +54,7 @@
 			.score {
 				border: 1px solid white;
 				border-radius: 10px;
-				font-size: 60px;
+				font-size: 80px;
 			}
 			.participant-name {
 				font-size: 3.3rem;
@@ -63,7 +62,7 @@
 		}
 	}
 	.container-screen {
-		max-width: 3400px;
+		/* max-width: 3400px; */
 		margin: 0 auto;
 	}
 }

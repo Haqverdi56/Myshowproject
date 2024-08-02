@@ -11,10 +11,10 @@ function Homepage() {
 			const response = await axios.post('http://localhost:3000/api/connect');
 			console.log(response.data);
 			setConnected(true);
+			response.data !== true ? setConnected(false) : null
 		} catch (error) {
 			console.error('Başlatma hatası:', error);
 			setConnected(false);
-			error == {} ? setConnected(false) : null
 		}
 	}
 	async function disconnectLive() {
@@ -38,7 +38,7 @@ function Homepage() {
 				<p>{connected ? 'Qoşulma Uğurlu!' : 'Qoşulma Uğursuz!'}</p>
 			</div>
 			<div id='signin-socket-inputs'>
-				<div>
+				{/* <div>
 					<input
 						type='text'
 						name='pageName'
@@ -55,7 +55,7 @@ function Homepage() {
 						autoComplete='off'
 						placeholder='Parol'
 					/>
-				</div>
+				</div> */}
 			</div>
 			<div className='buttons'>
 				<div className='button-div'>
