@@ -24,7 +24,7 @@ function Livegifts({ giftData }) {
 									</div>
 								</div>
 								<div className='sender-name'>
-									<p>{newGift?.nickname} jeton: {newGift.diamondCount} x{newGift.repeatCount}</p>
+									<p>{newGift?.nickname} --- JETON: {newGift.diamondCount}</p>
 								</div>
 								<p>{formatDate(newGift?.timestamp)}</p>
 							</div>
