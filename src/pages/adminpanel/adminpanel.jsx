@@ -85,7 +85,9 @@ function Adminpanel() {
 							Xalları Sıfırla
 						</a>
 					</div>
+					<div className="commands">
 					<Link to='/'>Əsas səhifə</Link>
+					</div>
 				</div>
 			</div>
 		</section>
