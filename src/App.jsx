@@ -13,10 +13,6 @@ import Livegifts from './pages/liveGifts/livegifts';
 import Duelsettings from './pages/duelsetting/duelsettings';
 
 function App() {
-	const [close, setClose] = useState(() => {
-		const savedClose = localStorage.getItem('close');
-		return savedClose === 'true';
-	});
 	const [participants, setParticipants] = useState(null);
 	const [giftData, setGiftData] = useState([]);
 
@@ -42,10 +38,6 @@ function App() {
 		};
 	}, []);
 
-	useEffect(() => {
-		localStorage.setItem('close', close);
-	}, [close]);
-
 	async function updateScore(uniqueId, giftId, count, repeatCount) {
 		console.log(uniqueId, giftId, count, repeatCount);
 	}
@@ -66,7 +58,6 @@ function App() {
 						<Monitorscreen
 							participants={participants}
 							setParticipants={setParticipants}
-							close={close}
 						/>
 					}
 				/>
@@ -80,7 +71,7 @@ function App() {
 						/>
 					}
 				/>
-				<Route path='/closescore' element={<Scorex setClose={setClose} />} />
+				<Route path='/closescore' element={<Scorex />} />
 			</Routes>
 		</>
 	);

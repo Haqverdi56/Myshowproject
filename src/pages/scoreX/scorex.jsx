@@ -2,16 +2,21 @@ import React, { useState } from 'react';
 import './scorex.css';
 import { Link } from 'react-router-dom';
 import { RiArrowGoBackLine } from 'react-icons/ri';
+import axios from 'axios';
 
-function Scorex({ setClose }) {
+function Scorex() {
 
-	const handleChange = (e) => {
+	const handleChange = async (e) => {
 		if (e.target.value == 'close') {
-			setClose(true);
-			console.log("true");
+			console.log("closs");
+			
+			await axios.post('http://localhost:3000/api/scorex', {
+				scoreX: true
+			})
 		} else {
-			setClose(false);
-			console.log('false');
+			await axios.post('http://localhost:3000/api/scorex', {
+				scoreX: false
+			})
 		}
 	};
 

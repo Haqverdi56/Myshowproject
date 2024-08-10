@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './monitorscreen.css';
 import socket from '../../socket.js';
 
-function Monitorscreen({ participants, close }) {
+function Monitorscreen({ participants }) {
 	const [duel, setDuel] = useState(false);
+	const [close, setClose] = useState(false);
 
 	// useEffect(() => {
 	// 	const interval = setInterval(() => {
@@ -13,9 +14,12 @@ function Monitorscreen({ participants, close }) {
 	// 	return () => clearInterval(interval);
 	// }, []);
 	useEffect(() => {
-		const as = participants?.some((participant) => participant.duel !== 0);
+		const as = participants?.some((participant) => participant.duel !== 0 );
 		as ? setDuel(true) : setDuel(false);
-		
+
+		participants?.forEach(element => {
+			element.scoreX == true ? setClose(true) : setClose(false)
+		});
 	}, [participants]);
 	if (close == false) {
 		participants?.sort((a, b) => b.score - a.score);
