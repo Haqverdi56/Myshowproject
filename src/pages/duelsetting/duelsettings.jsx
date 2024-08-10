@@ -41,7 +41,6 @@ function Duelsettings({ participants }) {
 							<select
 								value={id}
 								onChange={(e) => handleIdChange(index, e.target.value)}
-								required
 							>
 								<option value=''>Select...</option>
 								{participants?.map((participant) =>

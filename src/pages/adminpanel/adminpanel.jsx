@@ -6,27 +6,27 @@ import axios from 'axios';
 function Adminpanel() {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-	useEffect(() => {
-		const getUsername = sessionStorage.getItem('username');
-		const getPassword = sessionStorage.getItem('password');
-		if (!getUsername && !getPassword) {
-			const authenticateUser = () => {
-				const username = prompt('Enter your username:');
-				const password = prompt('Enter your password:');
+	// useEffect(() => {
+	// 	const getUsername = sessionStorage.getItem('username');
+	// 	const getPassword = sessionStorage.getItem('password');
+	// 	if (!getUsername && !getPassword) {
+	// 		const authenticateUser = () => {
+	// 			const username = prompt('Enter your username:');
+	// 			const password = prompt('Enter your password:');
 
-				if (username === 'sabir' && password === 'sabir111') {
-					sessionStorage.setItem('username', username);
-					sessionStorage.setItem('password', password);
-					setIsAuthenticated(true);
-				} else {
-					alert('Invalid credentials!');
-					window.location.reload(); // Doğru giriş yapılmazsa sayfayı yeniden yükleyin.
-				}
-			};
-			authenticateUser();
-		}
+	// 			if (username === 'sabir' && password === 'sabir111') {
+	// 				sessionStorage.setItem('username', username);
+	// 				sessionStorage.setItem('password', password);
+	// 				setIsAuthenticated(true);
+	// 			} else {
+	// 				alert('Invalid credentials!');
+	// 				window.location.reload(); // Doğru giriş yapılmazsa sayfayı yeniden yükleyin.
+	// 			}
+	// 		};
+	// 		authenticateUser();
+	// 	}
 
-	}, []);
+	// }, []);
 
 	const resetScores = async () => {
 		const userConfirmed = window.confirm('Sıfırlamaq istədiyindən əminsən?');
@@ -53,9 +53,9 @@ function Adminpanel() {
 					<h3>Admin Panel</h3>
 				</div>
 				<div className='settings'>
-					<div className='commands'>
+					{/* <div className='commands'>
 						<a href='#'>Canlı Səsvermə</a>
-					</div>
+					</div> */}
 					<div className='commands'>
 						<Link to='/livegifts'>Canlı Hədiyyələr</Link>
 					</div>
