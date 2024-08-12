@@ -17,7 +17,7 @@ function App() {
 	const [giftData, setGiftData] = useState([]);
 
 	async function test() {
-		const response = await axios.get('http://localhost:3000/api/participants');
+		const response = await axios.get('https://tiktok-show-back.onrender.com/api/participants');
 		setParticipants(response.data);
 	}
 
@@ -38,9 +38,9 @@ function App() {
 		};
 	}, []);
 
-	async function updateScore(uniqueId, giftId, count, repeatCount) {
-		console.log(uniqueId, giftId, count, repeatCount);
-	}
+	// async function updateScore(uniqueId, giftId, count, repeatCount) {
+	// 	console.log(uniqueId, giftId, count, repeatCount);
+	// }
 	
 	return (
 		<>
@@ -67,7 +67,6 @@ function App() {
 						<Increasescore
 							setParticipants={setParticipants}
 							participants={participants}
-							updateScore={updateScore}
 						/>
 					}
 				/>

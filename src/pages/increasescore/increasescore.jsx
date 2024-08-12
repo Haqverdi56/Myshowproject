@@ -11,7 +11,7 @@ function Increasescore({ participants }) {
 	async function newScore(selectedParticipant) {
 		// console.log(selectedParticipant);
 		const response = await axios.patch(
-			`http://localhost:3000/api/participants/${selectedParticipant._id}`,
+			`https://tiktok-show-back.onrender.com/api/participants/${selectedParticipant._id}`,
 			{
 				giftId: selectedParticipant.giftId[0],
 				gifts: selectedParticipant.gifts,

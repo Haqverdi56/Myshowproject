@@ -4,19 +4,20 @@ import socket from '../../socket.js';
 
 function Monitorscreen({ participants }) {
 	const [duel, setDuel] = useState(false);
-	const [close, setClose] = useState(false);
+	const [close, setClose] = useState(null);
 
-	// useEffect(() => {
-	// 	const interval = setInterval(() => {
-	// 		window.location.reload();
-	// 	}, 10000);
+	useEffect(() => {
+		const interval = setInterval(() => {
+			window.location.reload();
+		}, 10000);
 
-	// 	return () => clearInterval(interval);
-	// }, []);
+		return () => clearInterval(interval);
+	}, []);
+
 	useEffect(() => {
 		const as = participants?.some((participant) => participant.duel !== 0 );
 		as ? setDuel(true) : setDuel(false);
-
+		
 		participants?.forEach(element => {
 			element.scoreX == true ? setClose(true) : setClose(false)
 		});
@@ -24,7 +25,7 @@ function Monitorscreen({ participants }) {
 	if (close == false) {
 		participants?.sort((a, b) => b.score - a.score);
 	}
-
+	
 	return (
 		<div className='screen'>
 			<div className='container-screen'>
