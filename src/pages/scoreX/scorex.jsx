@@ -30,7 +30,7 @@ function Scorex() {
 							<option value='close'>Bağla</option>
 						</select>
 					</div>
-					<button type='submit'>Səsi dəyiş</button>
+					{/* <button type='submit'>Səsi dəyiş</button> */}
 				</form>
 				<div className='back-admin'>
 					<Link className='back' to='/admin'>

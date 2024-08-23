@@ -20,7 +20,7 @@ function Duelsettings({ participants }) {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const response = await axios.patch('http://localhost:3000/api/set-duel', {
+			const response = await axios.patch('https://tiktok-show-back.onrender.com/api/set-duel', {
 				ids: selectedIds,
 			});
 			console.log(response.data.message);
