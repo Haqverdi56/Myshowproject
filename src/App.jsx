@@ -23,24 +23,19 @@ function App() {
 
 	useEffect(() => {
 		socket.on('gift', (data) => {
-			// updateScore(
-			// 	data.uniqueId,
-			// 	data.giftId,
-			// 	data.diamondCount,
-			// 	data.repeatCount
-			// );
 			test();
 			setGiftData((prevGifts) => [data, ...prevGifts]);
 		});
-		test();
+		// test();
 		return () => {
 			socket.off('message');
 		};
 	}, []);
 
-	// async function updateScore(uniqueId, giftId, count, repeatCount) {
-	// 	console.log(uniqueId, giftId, count, repeatCount);
-	// }
+	useEffect(()=>{
+		test()
+	},[giftData])
+
 	
 	return (
 		<>

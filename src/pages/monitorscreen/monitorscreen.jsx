@@ -6,13 +6,13 @@ function Monitorscreen({ participants }) {
 	const [duel, setDuel] = useState(false);
 	const [close, setClose] = useState(null);
 
-	useEffect(() => {
-		const interval = setInterval(() => {
-			window.location.reload();
-		}, 10000);
+	// useEffect(() => {
+	// 	const interval = setInterval(() => {
+	// 		window.location.reload();
+	// 	}, 10000);
 
-		return () => clearInterval(interval);
-	}, []);
+	// 	return () => clearInterval(interval);
+	// }, []);
 
 	useEffect(() => {
 		const as = participants?.some((participant) => participant.duel !== 0 );
