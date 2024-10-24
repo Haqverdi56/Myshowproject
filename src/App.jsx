@@ -11,18 +11,21 @@ import axios from 'axios';
 import socket from './socket';
 import Livegifts from './pages/liveGifts/livegifts';
 import Duelsettings from './pages/duelsetting/duelsettings';
+import Likers from './pages/likers/likers';
 
 function App() {
 	const [participants, setParticipants] = useState(null);
 	const [giftData, setGiftData] = useState([]);
-
+	console.log(giftData);
+	
 	async function test() {
-		const response = await axios.get('https://tiktok-show-back.onrender.com/api/participants');
+		const response = await axios.get('http://localhost:3000/api/participants');
 		setParticipants(response.data);
 	}
 
 	useEffect(() => {
 		socket.on('gift', (data) => {
+			console.log(data);
 			test();
 			setGiftData((prevGifts) => [data, ...prevGifts]);
 		});
@@ -43,6 +46,7 @@ function App() {
 				<Route path='/' element={<Homepage />} />
 				<Route path='/admin' element={<Adminpanel />} />
 				<Route path='/livegifts' element={<Livegifts giftData={giftData} />} />
+				<Route path='/likers' element={<Likers />} />
 				<Route
 					path='/duelsettings'
 					element={<Duelsettings participants={participants}/>}

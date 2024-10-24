@@ -1,0 +1,44 @@
+#likers {
+	/* display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center; */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+	min-height: 100vh;
+    background-color: #44073c;
+    gap: 1rem;
+    padding: 100px;
+}
+
+.likers-box {
+	/* width: 250px;
+	height: 250px; */
+	background-color: #b000dc;
+	margin: 10px;
+	color: white;
+	font-size: 1.2rem;
+	border-radius: 20px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 0;
+    text-align: center;
+
+    .likers-img {
+        width: 220px;
+        height: 150px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .like-count {
+        border: 2px solid #44073c;
+        padding: 0 75px;
+        margin-top: 1rem;
+        font-size: 2rem;
+    }
+}

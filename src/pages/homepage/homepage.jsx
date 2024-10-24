@@ -4,21 +4,19 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function Homepage() {
-	const [connected, setConnected] = useState(() => {
-		const storedValue = localStorage.getItem('connected');
-		return storedValue === 'true';
-	});
+	const [connected, setConnected] = useState(false);
 
 	useEffect(() => {
-		localStorage.setItem('connected', connected);
+		startShow('connection-status');
 	}, [connected]);
 
-	async function startShow() {
+	async function startShow(endPoint = 'connect') {
 		try {
-			const response = await axios.post('https://tiktok-show-back.onrender.com/api/connect');
-			console.log(response.data);
+			const response = await axios.post(
+				`http://localhost:3000/api/${endPoint}`
+			);
 			setConnected(true);
-			response.data !== true ? setConnected(false) : null
+			response.data !== true ? setConnected(false) : null;
 		} catch (error) {
 			console.error('Başlatma hatası:', error);
 			setConnected(false);
@@ -26,7 +24,7 @@ function Homepage() {
 	}
 	async function disconnectLive() {
 		try {
-			const response = await axios.post('https://tiktok-show-back.onrender.com/api/disconnect');
+			const response = await axios.post('http://localhost:3000/api/disconnect');
 			console.log(response.data);
 			setConnected(false);
 		} catch (error) {
@@ -66,7 +64,7 @@ function Homepage() {
 			</div>
 			<div className='buttons'>
 				<div className='button-div'>
-					<button className='start-button' onClick={() => startShow()}>
+					<button className='start-button' onClick={() => startShow('connect')}>
 						Başla
 					</button>
 				</div>
@@ -74,7 +72,7 @@ function Homepage() {
 					<button onClick={() => disconnectLive()}>Stop ver</button>
 				</div>
 				<div className='button-div'>
-					<Link to='/admin'>Admin Giriş</Link>
+					<Link to='/admin'>Admin Panel</Link>
 				</div>
 				<div className='button-div'>
 					<Link to='/screen'>Monitor ekranı</Link>

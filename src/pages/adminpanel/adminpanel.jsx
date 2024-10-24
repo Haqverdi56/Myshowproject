@@ -34,7 +34,7 @@ function Adminpanel() {
 			alert('Xallar sıfırlandı');
 			try {
 				const response = await axios.patch(
-					'https://tiktok-show-back.onrender.com/api/reset-scores'
+					'http://localhost:3000/api/reset-scores'
 				);
 				console.log(response.data.message);
 			} catch (error) {
