@@ -13,7 +13,7 @@ function Homepage() {
 	async function startShow(endPoint = 'connect') {
 		try {
 			const response = await axios.post(
-				`http://localhost:3000/api/${endPoint}`
+				`https://tiktok-show-back.onrender.com/api/${endPoint}`
 			);
 			setConnected(true);
 			response.data !== true ? setConnected(false) : null;
@@ -24,7 +24,7 @@ function Homepage() {
 	}
 	async function disconnectLive() {
 		try {
-			const response = await axios.post('http://localhost:3000/api/disconnect');
+			const response = await axios.post('https://tiktok-show-back.onrender.com/api/disconnect');
 			console.log(response.data);
 			setConnected(false);
 		} catch (error) {

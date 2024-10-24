@@ -5,7 +5,7 @@ import axios from 'axios';
 function Likers() {
 	const [likers, setLikers] = useState(null);
 	async function getAllLikers() {
-		const response = await axios.get('http://localhost:3000/api/showlikers');
+		const response = await axios.get('https://tiktok-show-back.onrender.com/api/showlikers');
 		console.log(response.data);
 		setLikers(response.data);
 	}

@@ -8,11 +8,11 @@ function Scorex() {
 
 	const handleChange = async (e) => {
 		if (e.target.value == 'close') {
-			await axios.post('hhttp://localhost:3000/api/scorex', {
+			await axios.post('https://tiktok-show-back.onrender.com/api/scorex', {
 				scoreX: true
 			})
 		} else {
-			await axios.post('hhttp://localhost:3000/api/scorex', {
+			await axios.post('https://tiktok-show-back.onrender.com/api/scorex', {
 				scoreX: false
 			})
 		}

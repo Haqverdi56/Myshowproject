@@ -19,7 +19,7 @@ function App() {
 	console.log(giftData);
 	
 	async function test() {
-		const response = await axios.get('http://localhost:3000/api/participants');
+		const response = await axios.get('https://tiktok-show-back.onrender.com/api/participants');
 		setParticipants(response.data);
 	}
 
